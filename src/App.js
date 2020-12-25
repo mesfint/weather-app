@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import { SearchByCity } from "./components/SearchByCity";
 
 function App() {
+  const [weather, setWeather] = useState([]);
+
+  const api_key = "2a96281f39f9eedf2d609ea5729f954a";
+
+  useEffect(() => {
+    const getWeatherInfo = async () => {
+      const res = await axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=Helsinki&appid=${api_key}`
+        )
+        .then(function (res) {
+          setWeather(res);
+          console.log(res.data.weather[0].main);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    };
+
+    getWeatherInfo();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app">
+        <h1>Weather App</h1>
+        <SearchByCity />
+      </div>
+    </>
   );
 }
 
