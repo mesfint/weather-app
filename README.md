@@ -1,16 +1,25 @@
 # Weather-app
 
-##  About This Project
+## About This Project
 
-Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).The app is about to display weather Information with a given city.All Information is coming from the api.
+Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).
 
-# Technologies Used
+## Features:
 
-The technologies I used  in this project are 
+- Search Cities and will appear including Country
+- Switch temperature degree
+- Display current weather Information such as "temp, humidity, pressure, wind
+- Display Icons that represent the weather condition
+
+# Built with:
+
+- HTML, CSS,JS
 - React,
 - React Hooks
 - ESLint, Prettier, Husky,
-- Material UI, Ant Design, styled-components
+- Material UI, Ant Design,
+- styled-components
+- OpenWeatherMap API
 
 # Development
 
@@ -18,8 +27,8 @@ This project can be downloaded and used as follows:
 
 1.  Install npm package before running the app
 
-  ```
-    yarn install
+```
+  yarn install
 
 ```
 
@@ -27,15 +36,17 @@ This project can be downloaded and used as follows:
 Min node verion: 9.0.0
 Min npm verion: 1.2
 ```
-2.   To run the project on local machine
+
+2.  To run the project on local machine
+
 ```
 yarn start
 
-``` 
+```
+
 ```
 Local Url: http://localhost:3000/
 ```
-
 
 # Testing
 
