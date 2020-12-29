@@ -4,14 +4,14 @@
 
 Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).
 
-## Features:
+## Features
 
 - Search Cities and will appear including Country
 - Switch temperature degree
 - Display current weather Information such as "temp, humidity, pressure, wind
 - Display Icons that represent the weather condition
 
-# Built with:
+#Technologies Used
 
 - HTML, CSS,JS
 - React,
