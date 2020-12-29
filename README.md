@@ -1,6 +1,9 @@
 # Weather-app
 
 ##  About This Project
+![Alt Text](https://imgur.com/lqAj9k3)
+
+
 
 Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).The app is about to display weather Information with a given city.All Information is coming from the api.
 
