@@ -1,7 +1,10 @@
 # Weather-app
 
 ##  About This Project
-![Alt Text](https://imgur.com/lqAj9k3)
+
+
+
+![foxdemo](https://github.com/foxdemo/foxdemo.github.io/blob/master/assets/images/avatar.png)
 
 
 
