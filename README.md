@@ -1,6 +1,6 @@
 # Weather-app
 
-## About This Project
+# About This Project
 
 Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).
 
