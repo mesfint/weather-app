@@ -4,7 +4,7 @@
 
 Weather-app is a personal project, the project consumed a public [open weather Api](https://openweathermap.org/).
 
-## Features
+## Featuress
 
 - Search Cities and will appear including Country
 - Switch temperature degree
