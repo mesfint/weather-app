@@ -1,40 +1,22 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import axios from "axios";
-import { SearchByCity } from "./components/SearchByCity";
+import React, { useState, useEffect } from 'react';
+import { Header } from './components/Header';
+import { Layout } from './components/Layout';
 
-function App() {
-  const [weather, setWeather] = useState([]);
+import { SearchWeather } from './components/SearchWeather';
+import { WeatherData } from './components/WeatherData';
 
-  const api_key = "2a96281f39f9eedf2d609ea5729f954a";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-  useEffect(() => {
-    const getWeatherInfo = async () => {
-      const res = await axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=Helsinki&appid=${api_key}`
-        )
-        .then(function (res) {
-          setWeather(res);
-          console.log(res.data.weather[0].main);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-    };
+import './App.css';
 
-    getWeatherInfo();
-  }, []);
-
+const App = () => {
   return (
     <>
-      <div className="app">
-        <h1>Weather App</h1>
-        <SearchByCity />
-      </div>
+      <CssBaseline>
+        <Layout />
+      </CssBaseline>
     </>
   );
-}
+};
 
 export default App;
