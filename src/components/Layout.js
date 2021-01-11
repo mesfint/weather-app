@@ -23,9 +23,6 @@ export const Layout = () => {
       <Box className={classes.mainContainer} component="div">
         <Header />
 
-        {/*   <SearchWeather /> */}
-        {/* <WeatherData /> */}
-
         <Footer />
       </Box>
     </>

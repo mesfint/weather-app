@@ -75,6 +75,8 @@ export const SearchWeather = () => {
             icon: res.data.weather[0].icon,
             wind: res.data.wind.speed,
             visibility: res.data.visibility,
+            dt: res.data.dt,
+            timezone: res.data.timezone,
           });
           setIsLoading(false);
           setSearch('');
@@ -132,6 +134,8 @@ export const SearchWeather = () => {
           icon={weather.icon}
           wind={weather.wind}
           visibility={weather.visibility}
+          dt={weather.dt}
+          timezone={weather.timezone}
         />
       )}
     </>

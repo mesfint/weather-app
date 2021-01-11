@@ -20,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     borderRadius: '3px',
     overflow: 'hidden',
+    background: 'red',
   },
   weatherData: {
-    width: '80%',
+    width: '100%',
     height: 'auto',
     border: '1px solid #000',
     margin: '1rem auto',
