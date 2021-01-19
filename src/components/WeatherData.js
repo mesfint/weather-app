@@ -28,51 +28,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '700px',
     borderRadius: '15px',
   },
-  /* weatherData: {
-    width: '65%',
-    height: 'auto',
-    justifyContent: 'center',
-    alignItems: 'right',
-
-    margin: '-1rem auto',
-    padding: '1rem 2.6rem',
-  },
-  iconStyle: {
-    margin: '-30px',
-    padding: 0,
-  },
-
-  grid: {
-    width: '61.5%',
-    justifyContent: 'left',
-    alignItems: 'left',
-    margin: '-.2rem auto',
-    padding: '1rem 2rem',
-  },
-
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    border: '1px solid #018dc3',
-    background: 'transparent',
-  },
-  flag: {
-    margin: ' -1rem 3rem',
-  },
-  toggleContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-
-    position: 'absolute',
-    top: '4rem',
-    left: '24rem',
-    fontSize: '2rem',
-    paddingLeft: '.2rem',
-  },
-  time: {
-    color: 'rgba(0,0,0, 0.5)',
-    fontSize: '1.3rem',
-  }, */
 }));
 
 export const WeatherData = ({
@@ -127,7 +82,7 @@ export const WeatherData = ({
           </div>
         </div>
 
-        {/*  <div>
+        <div className="celAndFahr">
           <p
             onClick={() => {
               setUnit(convertTempUnitToCelsius(temp));
@@ -144,19 +99,19 @@ export const WeatherData = ({
           >
             °F
           </p>{' '}
-        </div> */}
+        </div>
 
         <div className="weatherDataDetails">
           <div>
             <h4>Humidity |</h4>
-            <h4>{humidity}</h4>
+            <h4>{humidity} %</h4>
           </div>
           <div>
             <h4> Wind | </h4>
             <h4>{wind} m/s</h4>
           </div>
           <div>
-            <h4> Pressure | </h4> <h4> {pressure}</h4>
+            <h4> Pressure | </h4> <h4> {pressure}mb</h4>
           </div>
           <div>
             <h4> Visibility </h4> <h4> {visibility}m</h4>

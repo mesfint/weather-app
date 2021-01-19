@@ -28,57 +28,34 @@ body {
   margin-right: 10px;
 }
 .item1 {
-  border-right: 1px solid green;
+  border-right: 1px solid #4f4f4f;
   width: 50%;
 }
 .weatherDataDetails {
   display: flex;
   margin-top: 10px;
-  color: red;
-}
-.app.warm {
-  display: flex;
-  background-image: url('./assets/clear-sky-bg.jpg');
-  background-size: cover;
-  background-position: bottom;
-  transition: 0.4 ease;
-  width: 100vw;
-  height: 100vh;
-}
-.app.cold {
-  display: flex;
-  background-image: url('./assets/snow2.jpg');
-  background-size: cover;
-  background-position: bottom;
-  transition: 0.4 ease;
-  width: 100vw;
-  height: 100vh;
-}
-.app.rain {
-  display: flex;
-  background-image: url('./assets/rain-bg.jpg');
-  background-size: cover;
-  background-position: bottom;
-  transition: 0.4 ease;
-  width: 100vw;
-  height: 100vh;
+  font-size: 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 200;
+  line-height: 5px;
+  letter-spacing: 3px;
 }
 
-.inputSearch {
+/* .inputSearch {
   position: relative;
   margin: 0 auto;
   top: 84px;
   left: 420px;
-}
+} */
 
-.input {
+.citySearchName {
   outline: none;
   box-sizing: border-box;
-  /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); */
-  border-radius: 39px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
   padding: 10px 30px;
-  width: 450px;
-  height: 72px;
+  width: 350px;
+  height: 52px;
 }
 .cityContainer {
   margin: 0 auto;
@@ -87,32 +64,6 @@ body {
   height: 35px;
   top: 235px;
   left: 750px;
-}
-
-.city {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 35px;
-  color: #0d7ce2;
-}
-
-.cityDate {
-  margin: 0 auto;
-  position: absolute;
-  width: 248px;
-  height: 23px;
-  left: 0px;
-  top: 55px;
-}
-.date {
-  font-style: normal;
-  font-weight: 300;
-  font-style: 20px;
-
-  line-height: 23px;
-  color: #0d7ce2;
 }
 
 .tempContainer {
@@ -126,122 +77,11 @@ body {
   border-radius: 32px;
 }
 
-.temp {
-  position: absolute;
-  left: 40px;
-  font-size: 60px;
-  line-height: 120px;
-  color: #fff;
-  font-weight: bold;
-}
-
-.desc {
-  position: absolute;
-  font-weight: 500;
-  font-size: 23px;
-  line-height: 27px;
-  left: 40px;
-  top: 70px;
-  color: #fff;
-}
-
-.tempType {
-  position: absolute;
-  width: 55px;
-  height: 150px;
-  left: 395px;
-  background: rgba(22, 104, 201, 0.45);
-  border-radius: 81px;
-  text-align: center;
-  line-height: 1;
-}
-.fahrenheit {
-  font-weight: 700;
-  font-size: 35px;
-  border-radius: 50%;
-  width: 40px;
-  color: #fff;
-  background: #92b8e2;
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-.celsius {
-  color: #fff;
-  background: #92b8e2;
-  margin-bottom: 35px;
-  font-size: 35px;
-  border-radius: 50%;
-  width: 40px;
-  margin-top: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-weight: 700;
-  font-size: 35px;
-}
-.icon {
-  position: absolute;
-  width: 57px;
-  height: 42px;
-  left: 150px;
-  top: -15px;
-}
-
-.containerDetail {
-  position: relative;
-  top: 634px;
-  right: 560px;
-  display: flex;
-  width: 450px;
-  height: 150px;
-}
-.detail {
-  position: absolute;
-  top: -20px;
-  right: 380px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1px;
-  margin: 5px;
-}
-
-.containerDetail div {
-  width: 25%;
-  color: #fff;
-  font-size: 16px;
-  height: 80px;
-  padding: 5px;
-  background: rgba(22, 104, 201, 0.35);
-  margin-right: 10px;
-  margin-top: 5px;
-  border-radius: 10px;
-}
-
-/* @media (max-width: 720px) {
-  .basicWeatherInfo {
-    display: flex;
-    flex-direction: column;
-  }
-  .item1 {
-    border-right: none;
-    width: 100%;
-  }
-  .item2 {
-    border-right: none;
-    width: 100%;
-  }
-}
- */
-
 .item1 .unit {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
 }
-
+/* 
 .citySearchName {
   font-size: 16px;
   font-size: max(16px, 1em);
@@ -250,7 +90,7 @@ body {
   background-color: #fff;
   border: 2px solid var(--input-border);
   border-radius: 4px;
-}
+} */
 .countryNameFlag h2 {
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
@@ -258,10 +98,22 @@ body {
 }
 .item1 .time {
   font-family: 'Work Sans', sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
   text-align: left;
-  color: red;
+}
+.celAndFahr {
+  display: flex;
+}
+.celAndFahr p {
+  padding: 2px;
+  margin: 2px;
+  background-color: #4f4f4f;
+  color: #fff;
+  outline: none;
+}
+.item2 img {
+  margin-top: -30px;
 }
 
 @media screen and (max-width: 800px) {
@@ -287,7 +139,6 @@ body {
   .weatherDataDetails {
     display: flex;
     margin-top: 10px;
-    color: red;
   }
 }
 
@@ -297,6 +148,9 @@ body {
     font-size: 0.8rem;
   }
   .title {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+
     font-size: 2rem;
     color: purple;
     text-align: center;
