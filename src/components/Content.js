@@ -88,13 +88,13 @@ export const Content = () => {
         <Box component="div">
           <Grid container spacing={2} className={classes.grid}>
             <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>Humidity: 1000</Paper>
+              Humidity: 1000
             </Grid>
             <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>Wind: 1000km/hr</Paper>
+              Wind: 1000km/hr |
             </Grid>
             <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>Pressure: 1000</Paper>
+              Pressure: 1000
             </Grid>
           </Grid>
         </Box>

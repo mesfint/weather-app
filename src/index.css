@@ -1,18 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300&display=swap');
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .app {
   display: flex;
-  background-image: url('./assests/bg.jpeg');
+  background-image: url('./assets/bg.jpg');
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /*  overflow: hidden; */
   /* position: absolute; */
+}
+
+.basicWeatherInfo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+}
+.countryNameFlag {
+  display: flex;
+  justify-content: center;
+}
+.countryNameFlag h2 {
+  margin-right: 10px;
+}
+.item1 {
+  border-right: 1px solid green;
+  width: 50%;
+}
+.weatherDataDetails {
+  display: flex;
+  margin-top: 10px;
+  color: red;
+}
+.app.warm {
+  display: flex;
+  background-image: url('./assets/clear-sky-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease;
+  width: 100vw;
+  height: 100vh;
+}
+.app.cold {
+  display: flex;
+  background-image: url('./assets/snow2.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease;
+  width: 100vw;
+  height: 100vh;
+}
+.app.rain {
+  display: flex;
+  background-image: url('./assets/rain-bg.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease;
+  width: 100vw;
+  height: 100vh;
 }
 
 .inputSearch {
@@ -170,4 +219,93 @@ body {
   margin-right: 10px;
   margin-top: 5px;
   border-radius: 10px;
+}
+
+/* @media (max-width: 720px) {
+  .basicWeatherInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  .item1 {
+    border-right: none;
+    width: 100%;
+  }
+  .item2 {
+    border-right: none;
+    width: 100%;
+  }
+}
+ */
+
+.item1 .unit {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+.citySearchName {
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+}
+.countryNameFlag h2 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+.item1 .time {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  text-align: left;
+  color: red;
+}
+
+@media screen and (max-width: 800px) {
+  .basicWeatherInfo {
+    display: flex;
+    flex-direction: column;
+    color: green;
+  }
+  .item1 {
+    border-right: none;
+    width: 100%;
+  }
+  .item1 .unit {
+    font-size: 5rem;
+  }
+  .item2 img {
+    width: 4rem;
+  }
+  .countryNameFlag img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .weatherDataDetails {
+    display: flex;
+    margin-top: 10px;
+    color: red;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .weatherDataDetails h4 {
+    color: purple;
+    font-size: 0.8rem;
+  }
+  .title {
+    font-size: 2rem;
+    color: purple;
+    text-align: center;
+  }
+  .citySearchName {
+    font-size: 14px;
+    font-size: max(14px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+  }
 }

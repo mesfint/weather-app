@@ -1,8 +1,8 @@
 export const convertTempUnitToFahrenheit = (temp) => {
-  return temp * 1.8 + 32;
+  return Math.round(temp * 1.8 + 32);
 };
 export const convertTempUnitToCelsius = (temp) => {
-  return temp;
+  return Math.round(temp);
 };
 
 export const getLocalTime = (timezone) => {
@@ -38,6 +38,7 @@ export const getLocalTime = (timezone) => {
 export const getDate = (dt) => {
   const unixTimestamp = dt;
   const milliseconds = dt * 1000;
+
   const dateObject = new Date(milliseconds);
   return (
     dateObject.toLocaleString('en-US', { weekday: 'short' }) +
@@ -46,4 +47,10 @@ export const getDate = (dt) => {
     ' ' +
     dateObject.toLocaleString('en-US', { year: 'numeric' })
   );
+};
+
+export const getHours = (dt) => {
+  let date = new Date(dt * 1000);
+  let hours = date.getHours();
+  return `${hours}: 00`;
 };

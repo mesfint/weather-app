@@ -17,13 +17,11 @@ export const Header = () => {
 
   return (
     <>
-      <Box className={classes.mainContainer} component="header">
-        <Typography variant="h3" component="h3">
-          Current Weather
-        </Typography>
+      <div className={classes.mainContainer} component="header">
+        <Typography className="title">Current Weather</Typography>
         {/* Input form */}
         <SearchWeather />
-      </Box>
+      </div>
     </>
   );
 };

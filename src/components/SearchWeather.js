@@ -91,11 +91,11 @@ export const SearchWeather = () => {
 
   return (
     <>
-      <form onSubmit={getWeatherInfo}>
-        <TextField
-          id="outlined-basic"
-          label="Write City Name  ..."
-          variant="outlined"
+      <form onSubmit={getWeatherInfo} className="form">
+        <input
+          className="citySearchName"
+          type="text"
+          placeholder="write city name  ..."
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
@@ -106,9 +106,6 @@ export const SearchWeather = () => {
               </InputAdornment>
             ),
           }}
-          className={clsx(classes.margin, classes.textField)}
-          noValidate
-          autoComplete="off"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

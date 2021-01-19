@@ -1,6 +1,6 @@
 body {
-  display: flex;
-  background-image: url('./assests/bg.jpeg');
+  /*   display: flex;
+  background-image: url('./assets/bg.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -8,27 +8,13 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: absolute;
+  position: absolute; */
 }
 
 @media only screen and (max-width: 767px) {
   body {
     /* The file size of this background image is 93% smaller
        to improve page load speed on mobile internet connections */
-    background-image: url('./assests/bg.jpeg');
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .weatherDataDetails {
-    border: none;
-    color: red;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .unit {
-    /*   color: red; */
-    font-size: 15px;
+    /*   background-image: url('./assets/bg.jpg'); */
   }
 }
