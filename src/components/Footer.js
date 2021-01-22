@@ -6,9 +6,10 @@ import { Typography } from '@material-ui/core/';
 
 const useStyles = makeStyles({
   footerStyle: {
-    position: 'fixed',
-    left: 0,
-    bottom: '15px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '50px',
     fontSize: '15px',
     width: '100%',
     textAlign: 'center',
@@ -21,8 +22,8 @@ function Footer() {
     <>
       <Typography className={classes.footerStyle} variant="h6">
         Designed and developed with{' '}
-        <FavoriteIcon style={{ color: 'red', fontSize: '15px' }} /> by MesfinT,
-        Dec-2020
+        <FavoriteIcon style={{ color: '#53d6bc', fontSize: '15px' }} /> by
+        MesfinT, Dec-2020
       </Typography>
     </>
   );

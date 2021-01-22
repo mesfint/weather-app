@@ -25,6 +25,17 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     top: '50%',
   },
+  citySearchInput: {
+    border: 'none',
+    outline: 'none',
+    boxSizing: ' border-box',
+    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)',
+    borderRadius: '9px',
+    padding: '10px 30px',
+    width: '350px',
+    height: '52px',
+    fontSize: '1.2rem',
+  },
   error: {
     color: 'white',
     background: '#180605',
@@ -93,9 +104,9 @@ export const SearchWeather = () => {
     <>
       <form onSubmit={getWeatherInfo} className="form">
         <input
-          className="citySearchName"
+          className={classes.citySearchInput}
           type="text"
-          placeholder="write city name  ..."
+          placeholder="write city name..."
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
