@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   iconStyle: {
     background: '#c4c4c4',
+    marginTop: '42px',
   },
 
   root: {
@@ -84,6 +85,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.5rem',
     marginBottom: '-1rem',
   },
+  description: {
+    fontFamily: 'Work Sans, sans-serif',
+    fontWeight: '600',
+    fontSize: '2rem',
+    textTransform: 'capitalize',
+    marginTop: '20px',
+  },
   country: {
     fontFamily: 'Work Sans, sans-serif',
     fontWeight: '600',
@@ -122,6 +130,7 @@ export const WeatherData = ({
   const classes = useStyles();
 
   const flag = ` https://www.countryflags.io/${country}/flat/64.png`;
+
   const handleShow = () => {
     setSHow(!show);
   };
@@ -160,7 +169,7 @@ export const WeatherData = ({
                 src={`http://openweathermap.org/img/wn/${icon}@4x.png`}
                 alt="weather images"
               ></img>
-              <Typography variant="h6" className={classes.country}>
+              <Typography variant="h6" className={classes.description}>
                 {description}
               </Typography>
             </Paper>
