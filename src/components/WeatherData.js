@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   iconStyle: {
     background: '#c4c4c4',
-    marginTop: '42px',
+    marginTop: '40px',
   },
 
   root: {
@@ -124,6 +124,7 @@ export const WeatherData = ({
   timezone,
   dt,
   error,
+  searchError,
 }) => {
   const [unit, setUnit] = useState(temp);
   const [show, setSHow] = useState(true);
@@ -160,6 +161,7 @@ export const WeatherData = ({
                   ? getDate(dt) + ' ' + getLocalTime(timezone)
                   : '00:00'}
               </h4>
+              {/*    {searchError && <h2>{searchError}</h2>} */}
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -8,38 +8,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Alert from '@material-ui/lab/Alert';
 import { WeatherData } from './WeatherData';
+import errorImage from '../assets/directions.png';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  textField: {
-    width: '45ch',
-    borderRadius: '30px',
-  },
-  spinner: {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-  },
   citySearchInput: {
-    border: 'none',
+    width: '35ch',
+    fontSize: '1.2rem',
+    outlined: 'none',
+  },
+  errorSearch: {
+    border: '2px solid red',
     outline: 'none',
-    boxSizing: ' border-box',
-    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)',
-    borderRadius: '9px',
-    padding: '10px 30px',
-    width: '350px',
-    height: '52px',
     fontSize: '1.2rem',
   },
-  error: {
-    color: 'white',
-    background: '#180605',
-    width: '22%',
+  alert: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '60%',
+    marginTop: '1rem',
+    marginBottom: '1rem',
     margin: '0 auto',
   },
 }));
@@ -49,7 +37,7 @@ export const SearchWeather = () => {
 
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [searchError, setSearchError] = useState('');
   const [weather, setWeather] = useState({
     city: 'Espoo',
     country: 'FI',
@@ -93,20 +81,42 @@ export const SearchWeather = () => {
           setSearch('');
         });
     } catch (error) {
-      setIsError(true);
+      handleValidSearchTerm();
     }
   };
   useEffect(() => {
     setWeather(weather);
   }, []);
 
+  const handleValidSearchTerm = () => {
+    let validSearch = false;
+
+    if (search.length === 0) {
+      setSearchError('City or country name is required');
+    } else if (search.length < 2) {
+      setSearchError('City or country name  should be minimum 3 characters');
+    } else {
+      setSearchError('');
+      validSearch = true;
+    }
+    if (validSearch) {
+      setSearchError('Please write correct city or country name');
+    }
+    setSearch('');
+  };
+
   return (
     <>
       <form onSubmit={getWeatherInfo} className="form">
-        <input
-          className={classes.citySearchInput}
+        <TextField
+          className={
+            searchError ? classes.errorSearch : classes.citySearchInput
+          }
           type="text"
-          placeholder="write city name..."
+          placeholder="write city or country name..."
+          variant="outlined"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
@@ -117,14 +127,17 @@ export const SearchWeather = () => {
               </InputAdornment>
             ),
           }}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
         />
       </form>
-      {isError ? (
-        <Alert className={classes.error} severity="error">
-          There is no City name
-        </Alert>
+
+      {searchError ? (
+        <div>
+          <Alert variant="filled" severity="error" className={classes.alert}>
+            <h2>{searchError}</h2>
+          </Alert>
+
+          <img alt="image" src={errorImage} />
+        </div>
       ) : isLoading ? (
         <div className={classes.root}>
           <CircularProgress disableShrink className={classes.spinner} />
@@ -144,6 +157,7 @@ export const SearchWeather = () => {
           visibility={weather.visibility}
           dt={weather.dt}
           timezone={weather.timezone}
+          searchError={searchError}
         />
       )}
     </>

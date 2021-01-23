@@ -7,16 +7,17 @@ import { Typography } from '@material-ui/core/';
 const useStyles = makeStyles({
   footerStyle: {
     display: 'flex',
+
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '50px',
+    marginTop: '100px',
     fontSize: '15px',
     width: '100%',
     textAlign: 'center',
   },
 });
 
-function Footer() {
+export const Footer = ({ image }) => {
   const classes = useStyles();
   return (
     <>
@@ -27,6 +28,6 @@ function Footer() {
       </Typography>
     </>
   );
-}
+};
 
 export default Footer;
