@@ -24,33 +24,53 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    /* display: 'flex', */
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: '0 auto',
     padding: '34px',
-    backgroundImage: 'url(bgImage)',
-    marginTop: '55px',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+
+    marginTop: '35px',
     backgroundColor: 'rgba(0,0,0, 0.09)',
     boxShadow: '0px 13px 40px -13px rgba(0,0,0,0.75)',
 
-    height: '60vh',
-    maxWidth: '700px',
+    /*   height: '60vh',
+    maxWidth: '700px', */
     borderRadius: '15px',
   },
   iconStyle: {
     background: '#c4c4c4',
     marginTop: '40px',
+    width: '30%',
   },
 
   root: {
     flexGrow: 1,
   },
   paper: {
+    padding: '2px 5px',
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    height: '80px',
+    width: '90%',
+    marginTop: '13px',
+    /*  marginRight: '30px', */
+    lineHeight: '15px',
+    flexWrap: 'wrap',
+    background: '#edf1f1',
+    borderRadius: '15px',
+  },
+  bigPaper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+
+    width: '95%',
+    marginRight: '20px',
     height: 'auto',
+    margin: '0 auto',
     marginTop: '20px',
     background: '#edf1f1',
     borderRadius: '15px',
@@ -101,8 +121,9 @@ const useStyles = makeStyles((theme) => ({
   },
   tempNumbers: {
     fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '600',
+    fontWeight: '500',
     fontSize: '1.2rem',
+    textAlign: 'center',
   },
   timeDate: {
     fontFamily: 'Work Sans, sans-serif',
@@ -139,9 +160,9 @@ export const WeatherData = ({
   return (
     <>
       <div className={classes.root}>
-        <Grid container spacing={3}>
+        <Grid className={classes.container} spacing={2}>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.bigPaper}>
               <h4 className={classes.tempDegree} onClick={handleShow}>
                 {show ? '°F' : '°C'}
               </h4>
@@ -165,7 +186,7 @@ export const WeatherData = ({
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.bigPaper}>
               <img
                 className={classes.iconStyle}
                 src={`http://openweathermap.org/img/wn/${icon}@4x.png`}
@@ -176,25 +197,25 @@ export const WeatherData = ({
               </Typography>
             </Paper>
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={12} sm={4}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}>Humidity </h4>
               <h4 className={classes.tempNumbers}>{humidity} %</h4>
             </Paper>
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}> Wind </h4>
               <h4 className={classes.tempNumbers}>{wind} m/s</h4>
             </Paper>
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}> Pressure </h4>{' '}
               <h4 className={classes.tempNumbers}> {pressure}mb</h4>
             </Paper>
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
               {' '}
               <h4 className={classes.tempDetails}> Visibility </h4>{' '}

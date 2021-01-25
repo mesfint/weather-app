@@ -7,10 +7,9 @@ import { Typography } from '@material-ui/core/';
 const useStyles = makeStyles({
   footerStyle: {
     display: 'flex',
-
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '100px',
+    marginTop: '40px',
     fontSize: '15px',
     width: '100%',
     textAlign: 'center',
