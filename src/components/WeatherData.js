@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Typography, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import React, { useState } from "react";
+import { Typography, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 import {
   convertTempUnitToFahrenheit,
   convertTempUnitToCelsius,
   getDate,
   getLocalTime,
-} from '../utils';
+} from "../utils";
 
 /* const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,111 +24,111 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 auto',
-    padding: '34px',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "0 auto",
+    padding: "34px",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
 
-    marginTop: '35px',
-    backgroundColor: 'rgba(0,0,0, 0.09)',
-    boxShadow: '0px 13px 40px -13px rgba(0,0,0,0.75)',
+    marginTop: "35px",
+    backgroundColor: "rgba(0,0,0, 0.09)",
+    boxShadow: "0px 13px 40px -13px rgba(0,0,0,0.75)",
 
     /*   height: '60vh',
     maxWidth: '700px', */
-    borderRadius: '15px',
+    borderRadius: "15px",
   },
   iconStyle: {
-    background: '#c4c4c4',
-    marginTop: '40px',
-    width: '30%',
+    background: "#c4c4c4",
+    marginTop: "40px",
+    /* width: "30%", */
   },
 
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: '2px 5px',
-    textAlign: 'center',
+    padding: "2px 5px",
+    textAlign: "center",
     color: theme.palette.text.secondary,
-    height: '80px',
-    width: '90%',
-    marginTop: '13px',
+    height: "80px",
+    width: "90%",
+    marginTop: "13px",
     /*  marginRight: '30px', */
-    lineHeight: '15px',
-    flexWrap: 'wrap',
-    background: '#edf1f1',
-    borderRadius: '15px',
+    lineHeight: "15px",
+    flexWrap: "wrap",
+    background: "#edf1f1",
+    borderRadius: "15px",
   },
   bigPaper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
 
-    width: '95%',
-    marginRight: '20px',
-    height: 'auto',
-    margin: '0 auto',
-    marginTop: '20px',
-    background: '#edf1f1',
-    borderRadius: '15px',
+    width: "95%",
+    marginRight: "20px",
+    height: "auto",
+    margin: "0 auto",
+    marginTop: "20px",
+    background: "#edf1f1",
+    borderRadius: "15px",
   },
   flag: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '-25px',
-    marginBottom: '-20px',
+    alignItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "-25px",
+    marginBottom: "-20px",
   },
   tempDegree: {
-    height: '35px',
-    width: ' 35px',
-    color: '#fff',
+    height: "35px",
+    width: " 35px",
+    color: "#fff",
 
-    marginLeft: '35%',
-    marginBottom: '-2%',
-    fontSize: '1.3rem',
-    paddingTop: '5px',
-    borderRadius: '50%',
-    display: 'block',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#53d6bc',
-    cursor: 'pointer',
+    marginLeft: "35%",
+    marginBottom: "-2%",
+    fontSize: "1.3rem",
+    paddingTop: "5px",
+    borderRadius: "50%",
+    display: "block",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#53d6bc",
+    cursor: "pointer",
   },
   tempDetails: {
-    color: '#53d6bc',
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '600',
-    fontSize: '1.5rem',
-    marginBottom: '-1rem',
+    color: "#53d6bc",
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "600",
+    fontSize: "1.5rem",
+    marginBottom: "-1rem",
   },
   description: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '600',
-    fontSize: '2rem',
-    textTransform: 'capitalize',
-    marginTop: '20px',
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "600",
+    fontSize: "2rem",
+    textTransform: "capitalize",
+    marginTop: "20px",
   },
   country: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '600',
-    fontSize: '2rem',
-    textTransform: 'capitalize',
-    marginTop: '-10px',
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "600",
+    fontSize: "2rem",
+    textTransform: "capitalize",
+    marginTop: "-10px",
   },
   tempNumbers: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '500',
-    fontSize: '1.2rem',
-    textAlign: 'center',
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "500",
+    fontSize: "1.2rem",
+    textAlign: "center",
   },
   timeDate: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '500',
-    fontSize: '1.2rem',
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "500",
+    fontSize: "1.2rem",
   },
 }));
 
@@ -164,7 +164,7 @@ export const WeatherData = ({
           <Grid item xs={12} sm={6}>
             <Paper className={classes.bigPaper}>
               <h4 className={classes.tempDegree} onClick={handleShow}>
-                {show ? '°F' : '°C'}
+                {show ? "°F" : "°C"}
               </h4>
               <Typography variant="h1" component="h1" className={classes.unit}>
                 {show
@@ -175,12 +175,12 @@ export const WeatherData = ({
               <h2 className={classes.country}>
                 {city},{country}
               </h2>
-              <img className={classes.flag} src={flag} alt={country}></img>{' '}
+              <img className={classes.flag} src={flag} alt={country}></img>{" "}
               <h4 className={classes.timeDate}>
-                {' '}
+                {" "}
                 {timezone
-                  ? getDate(dt) + ' ' + getLocalTime(timezone)
-                  : '00:00'}
+                  ? getDate(dt) + " " + getLocalTime(timezone)
+                  : "00:00"}
               </h4>
               {/*    {searchError && <h2>{searchError}</h2>} */}
             </Paper>
@@ -211,14 +211,14 @@ export const WeatherData = ({
           </Grid>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
-              <h4 className={classes.tempDetails}> Pressure </h4>{' '}
+              <h4 className={classes.tempDetails}> Pressure </h4>{" "}
               <h4 className={classes.tempNumbers}> {pressure}mb</h4>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={3}>
             <Paper className={classes.paper}>
-              {' '}
-              <h4 className={classes.tempDetails}> Visibility </h4>{' '}
+              {" "}
+              <h4 className={classes.tempDetails}> Visibility </h4>{" "}
               <h4 className={classes.tempNumbers}> {visibility}m</h4>
             </Paper>
           </Grid>
