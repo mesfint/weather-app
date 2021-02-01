@@ -93,17 +93,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center', */
     background: '#9d65c9',
     border: '1px solid #edf1cd',
-    /*   padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-
-    width: '95%',
-    marginRight: '20px',
-    height: 'auto',
-    margin: '0 auto',
-    marginTop: '20px',
-    background: '#edf1f1',
-    borderRadius: '15px', */
   },
   flag: {
     alignItems: 'center',
@@ -222,6 +211,9 @@ export const WeatherData = ({
                   °C
                 </h4>
               </div>
+              <h4 className={classes.tempDegree} onClick={handleShow}>
+                {show ? '°F' : '°C'}
+              </h4>
               <Typography variant="h1" component="h1" className={classes.unit}>
                 {show
                   ? convertTempUnitToCelsius(unit)
