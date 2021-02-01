@@ -7,17 +7,21 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   mainContainer: {
-    background: '#b1d4e7',
+    background: '#b14e7' /* #d3e0ea */,
     textAlign: 'center',
     border: 'transparent',
     padding: '2rem 3rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontFamily: 'Work Sans, sans-serif',
     fontWeight: '600',
     fontSize: '2rem',
     textTransform: 'capitalize',
-    marginTop: '-10px',
+    marginBottom: '2rem',
+    paddingBottom: '3rem',
   },
 });
 
@@ -26,16 +30,10 @@ export const Header = () => {
 
   return (
     <>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <div className={classes.mainContainer} component="header">
-              <Typography className={classes.title}>Current Weather</Typography>
-
-              <SearchWeather />
-            </div>
-          </Paper>
-        </Grid>
+      <Grid item xs={12} sm={12}>
+        <div className={classes.mainContainer} component="header">
+          <Typography className={classes.title}>Current Weather</Typography>
+        </div>
       </Grid>
     </>
   );

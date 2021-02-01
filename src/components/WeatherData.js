@@ -28,42 +28,72 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     margin: '0 auto',
-    padding: '34px',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
 
-    marginTop: '35px',
+    /* display: 'flex',
+    width: '80vw',
+    padding: '1rem',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0 auto',
     backgroundColor: 'rgba(0,0,0, 0.09)',
-    boxShadow: '0px 13px 40px -13px rgba(0,0,0,0.75)',
-
+    boxShadow: '1687a7 rgba(0,0,0,0.75)', */
     /*   height: '60vh',
-    maxWidth: '700px', */
-    borderRadius: '15px',
-  },
-  iconStyle: {
-    background: '#c4c4c4',
-    marginTop: '40px',
-    width: '30%',
+    maxWidth: '700px', 
+    borderRadius: '15px',*/
   },
 
-  root: {
-    flexGrow: 1,
+  iconStyle: {
+    /*  background: '#c4c4c4', */
+    /*  marginTop: '40px', */
+    width: '30%',
+    margin: '0 -17px',
   },
+
+  /* card: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '50%',
+    marginRight: '1rem',
+    padding: '1rem',
+    borderRadius: '6px',
+  }, */
+  /*   cardDetail: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '33.3%',
+    marginRight: '1rem',
+    padding: '1rem',
+    borderRadius: '6px',
+  }, */
+
   paper: {
-    padding: '2px 5px',
+    flex: 1,
+    margin: '0 auto',
+
+    /* flex: 1, */
+    /* padding: '2px 5px',
     textAlign: 'center',
     color: theme.palette.text.secondary,
     height: '80px',
-    width: '90%',
-    marginTop: '13px',
+    width: '90%', */
+    /* marginTop: '13px', */
     /*  marginRight: '30px', */
-    lineHeight: '15px',
+    /*  lineHeight: '15px',
     flexWrap: 'wrap',
     background: '#edf1f1',
-    borderRadius: '15px',
+    borderRadius: '15px', */
+    background: '#edf1f1',
+    border: '1px solid #edf1cd',
   },
   bigPaper: {
-    padding: theme.spacing(2),
+    flex: 1,
+    margin: '0 auto',
+    /* flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center', */
+    background: '#9d65c9',
+    border: '1px solid #edf1cd',
+    /*   padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
 
@@ -73,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     marginTop: '20px',
     background: '#edf1f1',
-    borderRadius: '15px',
+    borderRadius: '15px', */
   },
   flag: {
     alignItems: 'center',
@@ -99,11 +129,19 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   tempDetails: {
-    color: '#53d6bc',
+    color: 'rgb(160, 69, 81)',
     fontFamily: 'Work Sans, sans-serif',
     fontWeight: '600',
     fontSize: '1.5rem',
-    marginBottom: '-1rem',
+    /*  marginBottom: '-1rem', */
+  },
+  tempDetailsBlack: {
+    color: '#000',
+    fontFamily: 'Work Sans, sans-serif',
+    fontWeight: '600',
+    fontSize: '1.5rem',
+    color: '#fff',
+    /*  marginBottom: '-1rem', */
   },
   description: {
     fontFamily: 'Work Sans, sans-serif',
@@ -149,23 +187,41 @@ export const WeatherData = ({
 }) => {
   const [unit, setUnit] = useState(temp);
   const [show, setSHow] = useState(true);
+  const [black, setBlack] = useState(false);
   const classes = useStyles();
 
   const flag = ` https://www.countryflags.io/${country}/flat/64.png`;
 
   const handleShow = () => {
     setSHow(!show);
+    setBlack(!black);
   };
 
   return (
     <>
       <div className={classes.root}>
-        <Grid className={classes.container} spacing={2}>
-          <Grid item xs={12} sm={6}>
+        <Grid item container spacing={2}>
+          <Grid item lg={6} xs={12} sm={6}>
             <Paper className={classes.bigPaper}>
-              <h4 className={classes.tempDegree} onClick={handleShow}>
-                {show ? '°F' : '°C'}
-              </h4>
+              <div>
+                <h4
+                  className={
+                    black ? classes.tempDetailsBlack : classes.tempDegree
+                  }
+                  onClick={handleShow}
+                >
+                  {/*  {show ? '°F' : '°C'} */}
+                  °F
+                </h4>
+                <h4
+                  className={
+                    black ? classes.tempDetailsBlack : classes.tempDegree
+                  }
+                  onClick={handleShow}
+                >
+                  °C
+                </h4>
+              </div>
               <Typography variant="h1" component="h1" className={classes.unit}>
                 {show
                   ? convertTempUnitToCelsius(unit)
@@ -185,7 +241,8 @@ export const WeatherData = ({
               {/*    {searchError && <h2>{searchError}</h2>} */}
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
+
+          <Grid item lg={6} item container xs={12} sm={6}>
             <Paper className={classes.bigPaper}>
               <img
                 className={classes.iconStyle}
@@ -197,25 +254,28 @@ export const WeatherData = ({
               </Typography>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={4}>
+        </Grid>
+
+        <Grid item container spacing={2}>
+          <Grid item lg={3} xs={12} sm={6}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}>Humidity </h4>
               <h4 className={classes.tempNumbers}>{humidity} %</h4>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item lg={3} xs={12} sm={6}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}> Wind </h4>
               <h4 className={classes.tempNumbers}>{wind} m/s</h4>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item lg={3} xs={12} sm={6}>
             <Paper className={classes.paper}>
               <h4 className={classes.tempDetails}> Pressure </h4>{' '}
               <h4 className={classes.tempNumbers}> {pressure}mb</h4>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item lg={3} xs={12} sm={6}>
             <Paper className={classes.paper}>
               {' '}
               <h4 className={classes.tempDetails}> Visibility </h4>{' '}

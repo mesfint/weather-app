@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     width: '45vw',
     fontSize: '1.2rem',
     outlined: 'none',
+    marginTop: '-9rem',
   },
   errorSearch: {
     outline: 'none',
@@ -40,6 +41,10 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
   },
+  errorImage: {
+    padding: '1rem',
+    height: '370px',
+  },
 }));
 
 export const SearchWeather = () => {
@@ -47,7 +52,7 @@ export const SearchWeather = () => {
 
   const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [searchError, setSearchError] = useState('');
+  const [searchError, setSearchError] = useState(null);
   const [weather, setWeather] = useState({
     city: 'Espoo',
     country: 'FI',
@@ -88,6 +93,7 @@ export const SearchWeather = () => {
             timezone: res.data.timezone,
           });
           setIsLoading(false);
+          setSearchError(null);
           setSearch('');
         });
     } catch (error) {
@@ -117,59 +123,70 @@ export const SearchWeather = () => {
 
   return (
     <>
-      <form onSubmit={getWeatherInfo} className="form">
-        <TextField
-          className={
-            searchError ? classes.errorSearch : classes.citySearchInput
-          }
-          type="text"
-          placeholder="write city or country name..."
-          variant="outlined"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon
-                  onClick={(e) => getWeatherInfo(e)}
-                  style={{ cursor: 'pointer' }}
-                />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </form>
-
-      {searchError ? (
+      <Grid item lg={12} xs={12} sm={12} className={classes.items}>
+        <form onSubmit={getWeatherInfo} className="form">
+          <TextField
+            className={
+              searchError ? classes.errorSearch : classes.citySearchInput
+            }
+            type="text"
+            placeholder="search city..."
+            variant="outlined"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon
+                    onClick={(e) => getWeatherInfo(e)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </form>
+      </Grid>
+      {searchError && (
         <div>
-          <Alert variant="filled" severity="error" className={classes.alert}>
+          {/*  <Alert variant="filled" severity="error" className={classes.alert}>
             <h2>{searchError}</h2>
-          </Alert>
+          </Alert> */}
 
-          <img alt="image" src={errorImage} />
+          {/* <TextField
+            error
+            id="outlined-error-helper-text"
+            label="Error"
+            defaultValue="Hello World"
+            helperText={searchError}
+            variant="outlined"
+          /> */}
+
+          <img alt="image" src={errorImage} className={classes.errorImage} />
         </div>
-      ) : isLoading ? (
+      )}
+      {isLoading && (
         <div className={classes.root}>
           <CircularProgress disableShrink className={classes.spinner} />
         </div>
-      ) : (
-        <WeatherData
-          city={weather.city}
-          country={weather.country}
-          temp={weather.temp}
-          min={weather.min}
-          max={weather.max}
-          pressure={weather.pressure}
-          humidity={weather.humidity}
-          description={weather.description}
-          icon={weather.icon}
-          wind={weather.wind}
-          visibility={weather.visibility}
-          dt={weather.dt}
-          timezone={weather.timezone}
-          searchError={searchError}
-        />
       )}
+
+      <WeatherData
+        city={weather.city}
+        country={weather.country}
+        temp={weather.temp}
+        min={weather.min}
+        max={weather.max}
+        pressure={weather.pressure}
+        humidity={weather.humidity}
+        description={weather.description}
+        icon={weather.icon}
+        wind={weather.wind}
+        visibility={weather.visibility}
+        dt={weather.dt}
+        timezone={weather.timezone}
+        searchError={searchError}
+      />
     </>
   );
 };

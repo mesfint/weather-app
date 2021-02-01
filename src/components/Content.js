@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { WeatherData } from './WeatherData';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -54,51 +55,7 @@ export const Content = () => {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.container} component="div">
-        <Typography variant="h3" component="h3" gutterBottom>
-          Espoo, FI
-        </Typography>
-        <Box className={classes.weatherData} component="div">
-          <Grid container spacing={2} className={classes.grid}>
-            <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  style={{ textAlign: 'left' }}
-                >
-                  27
-                  <sup style={{ fontSize: '45px', color: 'red' }}>°c</sup>
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>
-                <CloudQueueIcon className={classes.iconStyle} />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper className={classes.paper}>
-                <Typography>C|F</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-
-        <Box component="div">
-          <Grid container spacing={2} className={classes.grid}>
-            <Grid item xs={12} md={4}>
-              Humidity: 1000
-            </Grid>
-            <Grid item xs={12} md={4}>
-              Wind: 1000km/hr |
-            </Grid>
-            <Grid item xs={12} md={4}>
-              Pressure: 1000
-            </Grid>
-          </Grid>
-        </Box>
-      </Box>
+      <WeatherData />
     </>
   );
 };
