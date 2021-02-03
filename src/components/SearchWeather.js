@@ -51,26 +51,34 @@ export const SearchWeather = () => {
   const classes = useStyles();
 
   const [search, setSearch] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchError, setSearchError] = useState(null);
   const [weather, setWeather] = useState({
-    city: 'Espoo',
-    country: 'FI',
-    temp: '-1',
-    min: '-1',
-    max: '-3',
-    pressure: '1000',
-    humidity: '10',
-    description: 'snow',
-    icon: '13n',
-    wind: '200',
-    visibility: '100',
+    city: '',
+    country: '',
+    temp: '',
+    pressure: '',
+    humidity: '',
+    description: '',
+    icon: '',
+    wind: '',
+    visibility: '',
   });
+
+  const getLocation = async () => {
+    try {
+      await axios.get('https://ipapi.co/json/').then((res) => {
+        setSearch(res.data.city);
+      });
+      setIsLoading(false);
+    } catch (error) {
+      setSearchError(null);
+    }
+  };
 
   const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
   const getWeatherInfo = async (e) => {
-    setIsLoading(true);
     try {
       e.preventDefault();
       await axios
@@ -101,8 +109,11 @@ export const SearchWeather = () => {
     }
   };
   useEffect(() => {
-    setWeather(weather);
+    getLocation();
   }, []);
+  useEffect(() => {
+    setWeather(weather);
+  });
 
   const handleValidSearchTerm = () => {
     let validSearch = false;
@@ -123,7 +134,7 @@ export const SearchWeather = () => {
 
   return (
     <>
-      <Grid item lg={12} xs={12} sm={12} className={classes.items}>
+      <Grid item sm={12}>
         <form onSubmit={getWeatherInfo} className="form">
           <TextField
             className={

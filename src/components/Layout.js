@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Box, Typography, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,21 +10,9 @@ import { SearchWeather } from './SearchWeather';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '50px 90px',
+    /*  padding: '50px 90px', */
     margin: '0 auto',
-    /* width: '100vw',
-    height: '100vh', */
-    /*    height: '600px',
-    width: '100vw', */
-    background: 'black',
     overflow: 'hidden',
-    background:
-      ' #C33764' /* fallback colour. Make sure this is just one solid colour. */,
-    background:
-      '-webkit-linear-gradient(rgba(29, 38, 113, 0.8),#2a3d66, url(../assets/cloud.jpeg)',
-    background:
-      'linear-gradient(rgba(29, 38, 113, 0.8),rgb(160, 69, 81)), url(../assets/cloud.jpeg)' /* The least supported option. */,
-    overflowX: 'hidden',
   },
   items: {
     objectFit: 'cover',
@@ -37,25 +25,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Layout = () => {
+  const [darkTheme, setDarkTheme] = useState(false);
+
   const classes = useStyles();
   return (
     <>
-      <div className={classes.root}>
+      <div className={darkTheme ? 'dark-theme' : 'light-theme'}>
         <Grid lg={12} container spacing={2}>
-          <Grid item lg={12} xs={12} sm={12} className={classes.items}>
+          <Grid item lg={12} xs={12} className={classes.items}>
             <Paper className={classes.paper}>
               {/* header section */}
+              <button
+                onClick={() => {
+                  setDarkTheme((prevTheme) => !prevTheme);
+                }}
+              >
+                Dark / Light
+              </button>
               <Header />
             </Paper>
           </Grid>
-          <Grid item lg={12} xs={12} sm={12} className={classes.items}>
+          <Grid item lg={12} sm={12} className={classes.items}>
             <Paper className={classes.paper}>
               {/* search input section */}
               <SearchWeather />
             </Paper>
           </Grid>
 
-          <Grid item lg={12} xs={12} sm={12} className={classes.items}>
+          <Grid item lg={12} sm={12} className={classes.items}>
             <Paper className={classes.paper}>
               <Footer />{' '}
             </Paper>

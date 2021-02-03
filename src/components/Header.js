@@ -30,7 +30,7 @@ export const Header = () => {
 
   return (
     <>
-      <Grid item xs={12} sm={12}>
+      <Grid>
         <div className={classes.mainContainer} component="header">
           <Typography className={classes.title}>Current Weather</Typography>
         </div>

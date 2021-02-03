@@ -28,18 +28,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     margin: '0 auto',
-
-    /* display: 'flex',
-    width: '80vw',
-    padding: '1rem',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 auto',
-    backgroundColor: 'rgba(0,0,0, 0.09)',
-    boxShadow: '1687a7 rgba(0,0,0,0.75)', */
-    /*   height: '60vh',
-    maxWidth: '700px', 
-    borderRadius: '15px',*/
   },
 
   iconStyle: {
@@ -49,39 +37,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 -17px',
   },
 
-  /* card: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '50%',
-    marginRight: '1rem',
-    padding: '1rem',
-    borderRadius: '6px',
-  }, */
-  /*   cardDetail: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '33.3%',
-    marginRight: '1rem',
-    padding: '1rem',
-    borderRadius: '6px',
-  }, */
-
   paper: {
     flex: 1,
     margin: '0 auto',
-
-    /* flex: 1, */
-    /* padding: '2px 5px',
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: '80px',
-    width: '90%', */
-    /* marginTop: '13px', */
-    /*  marginRight: '30px', */
-    /*  lineHeight: '15px',
-    flexWrap: 'wrap',
-    background: '#edf1f1',
-    borderRadius: '15px', */
     background: '#edf1f1',
     border: '1px solid #edf1cd',
   },
@@ -91,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     /* flex: 1,
     justifyContent: 'center',
     alignItems: 'center', */
-    background: '#9d65c9',
+    background: '#d3e0ea',
     border: '1px solid #edf1cd',
   },
   flag: {
@@ -101,19 +59,20 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-25px',
     marginBottom: '-20px',
   },
-  tempDegree: {
-    height: '35px',
-    width: ' 35px',
-    color: '#fff',
 
-    marginLeft: '35%',
+  tempDegree: {
+    height: '34px',
+    width: ' 40px',
+    color: '#fff',
+    /* marginLeft: '35px', */
+
     marginBottom: '-2%',
     fontSize: '1.3rem',
-    paddingTop: '5px',
+    paddingTop: '8px',
     borderRadius: '50%',
-    display: 'block',
-    justifyContent: 'center',
-    alignItems: 'center',
+    /* display: 'block', */
+    /* justifyContent: 'right',
+    alignItems: 'right', */
     backgroundColor: '#53d6bc',
     cursor: 'pointer',
   },
@@ -192,7 +151,13 @@ export const WeatherData = ({
         <Grid item container spacing={2}>
           <Grid item lg={6} xs={12} sm={6}>
             <Paper className={classes.bigPaper}>
-              <div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'right',
+                  alignItems: 'right',
+                }}
+              >
                 <h4
                   className={
                     black ? classes.tempDetailsBlack : classes.tempDegree
@@ -200,7 +165,7 @@ export const WeatherData = ({
                   onClick={handleShow}
                 >
                   {/*  {show ? '°F' : '°C'} */}
-                  °F
+                  F°
                 </h4>
                 <h4
                   className={
@@ -208,12 +173,9 @@ export const WeatherData = ({
                   }
                   onClick={handleShow}
                 >
-                  °C
+                  C°
                 </h4>
               </div>
-              <h4 className={classes.tempDegree} onClick={handleShow}>
-                {show ? '°F' : '°C'}
-              </h4>
               <Typography variant="h1" component="h1" className={classes.unit}>
                 {show
                   ? convertTempUnitToCelsius(unit)

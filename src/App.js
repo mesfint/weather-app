@@ -12,9 +12,9 @@ import './App.css';
 const App = () => {
   return (
     <>
-      <CssBaseline>
+      <div className="container">
         <Layout />
-      </CssBaseline>
+      </div>
     </>
   );
 };
