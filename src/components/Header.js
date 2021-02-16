@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
-import { SearchWeather } from './SearchWeather';
-import { Typography, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   mainContainer: {
-    background: '#b14e7' /* #d3e0ea */,
-    textAlign: 'center',
-    border: 'transparent',
-    padding: '2rem 3rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    background: "#b14e7" /* #d3e0ea */,
+    textAlign: "center",
+    border: "transparent",
+    padding: "2rem 3rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: '600',
-    fontSize: '2rem',
-    textTransform: 'capitalize',
-    marginBottom: '2rem',
-    paddingBottom: '3rem',
+    fontFamily: "Work Sans, sans-serif",
+    fontWeight: "600",
+    fontSize: "2rem",
+    textTransform: "capitalize",
+    marginBottom: "2rem",
+    paddingBottom: "3rem",
   },
 });
 

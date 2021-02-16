@@ -1,74 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import clsx from 'clsx';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Alert from '@material-ui/lab/Alert';
-import Grid from '@material-ui/core/Grid';
-import { WeatherData } from './WeatherData';
-import errorImage from '../assets/directions.png';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
+import { WeatherData } from "./WeatherData";
+import errorImage from "../assets/directions.png";
 
 const useStyles = makeStyles((theme) => ({
   citySearchInput: {
-    width: '45vw',
-    fontSize: '1.2rem',
-    outlined: 'none',
-    marginTop: '-9rem',
+    width: "45vw",
+    fontSize: "1.2rem",
+    outlined: "none",
+    marginTop: "-9rem",
   },
   errorSearch: {
-    outline: 'none',
-    fontSize: '1.2rem',
-    width: '45vw',
+    width: "45vw",
+    fontSize: "1.2rem",
+    outlined: "none",
+    marginTop: "-9rem",
   },
   alert: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '45vw',
-    marginTop: '1rem',
-    marginBottom: '1rem',
-    margin: '0 auto',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "45vw",
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    margin: "0 auto",
   },
   form: {
-    width: '80%',
+    width: "80%",
   },
   spinner: {
-    color: '#53d6bc',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
+    color: "#53d6bc",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
   },
   errorImage: {
-    padding: '1rem',
-    height: '370px',
+    padding: "1rem",
+    height: "370px",
   },
 }));
 
 export const SearchWeather = () => {
   const classes = useStyles();
 
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [searchError, setSearchError] = useState(null);
   const [weather, setWeather] = useState({
-    city: '',
-    country: '',
-    temp: '',
-    pressure: '',
-    humidity: '',
-    description: '',
-    icon: '',
-    wind: '',
-    visibility: '',
+    city: "",
+    country: "",
+    temp: 0,
+    pressure: "",
+    humidity: "",
+    description: "",
+    icon: "",
+    wind: "",
+    visibility: "",
   });
 
   const getLocation = async () => {
     try {
-      await axios.get('https://ipapi.co/json/').then((res) => {
-        setSearch(res.data.city);
+      await axios.get("https://ipapi.co/json/").then((res) => {
+        getWeatherInfo(null, res.data.city);
       });
       setIsLoading(false);
     } catch (error) {
@@ -78,12 +77,14 @@ export const SearchWeather = () => {
 
   const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
-  const getWeatherInfo = async (e) => {
+  const getWeatherInfo = async (e, initialCity) => {
     try {
-      e.preventDefault();
+      e?.preventDefault();
       await axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?q=${
+            search ? search : initialCity
+          }&appid=${API_KEY}&units=metric`
         )
 
         .then((res) => {
@@ -102,36 +103,20 @@ export const SearchWeather = () => {
           });
           setIsLoading(false);
           setSearchError(null);
-          setSearch('');
+          setSearch("");
         });
     } catch (error) {
-      handleValidSearchTerm();
+      //handleValidSearchTerm();
+      setSearchError(true);
     }
   };
   useEffect(() => {
     getLocation();
   }, []);
+
   useEffect(() => {
     setWeather(weather);
   });
-
-  const handleValidSearchTerm = () => {
-    let validSearch = false;
-
-    if (search.length === 0) {
-      setSearchError('City or country name is required');
-    } else if (search.length < 2) {
-      setSearchError('City or country name  should be minimum 3 characters');
-    } else {
-      setSearchError('');
-      validSearch = true;
-    }
-    if (validSearch) {
-      setSearchError('Please write correct city or country name');
-    }
-    setSearch('');
-  };
-
   return (
     <>
       <Grid item sm={12}>
@@ -150,30 +135,22 @@ export const SearchWeather = () => {
                 <InputAdornment position="start">
                   <SearchIcon
                     onClick={(e) => getWeatherInfo(e)}
-                    style={{ cursor: 'pointer' }}
-                  />
+                    style={{ cursor: "pointer" }}
+                  />{" "}
                 </InputAdornment>
               ),
             }}
           />
         </form>
       </Grid>
+
       {searchError && (
         <div>
-          {/*  <Alert variant="filled" severity="error" className={classes.alert}>
-            <h2>{searchError}</h2>
-          </Alert> */}
+          <h2 style={{ color: "red", marginTop: "-15px" }}>
+            No country found!!!
+          </h2>
 
-          {/* <TextField
-            error
-            id="outlined-error-helper-text"
-            label="Error"
-            defaultValue="Hello World"
-            helperText={searchError}
-            variant="outlined"
-          /> */}
-
-          <img alt="image" src={errorImage} className={classes.errorImage} />
+          <img alt="error" src={errorImage} className={classes.errorImage} />
         </div>
       )}
       {isLoading && (
@@ -181,7 +158,6 @@ export const SearchWeather = () => {
           <CircularProgress disableShrink className={classes.spinner} />
         </div>
       )}
-
       <WeatherData
         city={weather.city}
         country={weather.country}

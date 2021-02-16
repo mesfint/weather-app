@@ -29,23 +29,22 @@ export const getLocalTime = (timezone) => {
       displayedTime = `${newTime.toString()}:${currentMin.toString()} am`;
     }
   } else {
-    displayedTime = '00:00 + am';
+    displayedTime = "00:00 + am";
   }
 
   return displayedTime;
 };
 
 export const getDate = (dt) => {
-  const unixTimestamp = dt;
   const milliseconds = dt * 1000;
 
   const dateObject = new Date(milliseconds);
   return (
-    dateObject.toLocaleString('en-US', { weekday: 'short' }) +
-    ' ' +
-    dateObject.toLocaleString('en-US', { month: 'short' }) +
-    ' ' +
-    dateObject.toLocaleString('en-US', { year: 'numeric' })
+    dateObject.toLocaleString("en-US", { weekday: "short" }) +
+    " " +
+    dateObject.toLocaleString("en-US", { month: "short" }) +
+    " " +
+    dateObject.toLocaleString("en-US", { year: "numeric" })
   );
 };
 

@@ -1,0 +1,27 @@
+.button {
+  padding: 10px;
+  background-color: #b4b1b1;
+  color: #444;
+  font-size: 1.2rem;
+  border: none;
+  height: 40px;
+  width: 40px;
+  outline: none;
+  border-radius: 50%;
+  color: #fff;
+  transition: all, 0.3s linear;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #53d6bc;
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  transition: all, 0.3s linear;
+  cursor: pointer;
+}
